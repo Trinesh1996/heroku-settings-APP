@@ -4,7 +4,7 @@ let bodyParser = require("body-parser")
 const exphbs = require("express-handlebars")
 const settingsBill = require("./public/settings-bill")
 const settings = settingsBill()
-const port = 3001
+let PORT = process.env.PORT || 3001;
 
 
 //DONT FORGET THE BODY PARSER -- parse application!
@@ -59,5 +59,5 @@ app.post("/settings", function(req, res){
 	
 })
 app.listen(port, function(){
-	console.log("App is starting on port" + port)
+	console.log("App is starting on port" + PORT)
 })
