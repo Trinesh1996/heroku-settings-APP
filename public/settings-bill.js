@@ -66,6 +66,14 @@ module.exports = function() {
 		})			
 	}
 
+	function clear(){
+		callsTotal = 0;
+		smsTotal = 0
+		total = 0;
+		warningLevel;
+		criticalLevel;
+	}
+
 	function filterCost(type){
 		let filter = [];
 		for (let i = 0; i < actionList.length; i++){
@@ -119,6 +127,7 @@ module.exports = function() {
 			getSms,
 			filterCost,
 			color,
-			totals
+			totals,
+			clear
 		}
 	}

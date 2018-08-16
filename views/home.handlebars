@@ -21,13 +21,16 @@
                 <input type="radio"  name="actionType" class="billItemTypeWithSettings" value="call">
                 <span class="label-body">Call</span>
               </label>
+
               <label class="">
                 <input type="radio" name="actionType" class="billItemTypeWithSettings" value="sms">
                 <span class="label-body" >SMS</span>
               </label>
-              <button class="button-primary"  type="submit" name="button">Add</button>
-             
+              <button class="button-primary"  type="submit" name="button">Add</button>                    
               </form>
+              <form class="" action="reset" method="post">
+              <button class="button-primary"  type="submit" name="resetbutton">Reset</button>
+              </form>      
 
 
               <h5>Totals</h5>
@@ -65,11 +68,11 @@
               <input class="u-full-width callCostSetting" name="callCost" type="text" placeholder="eg. 2.55" value="{{callCosts}}">
               <label for="exampleEmailInput">SMS cost</label>
               <input class="u-full-width smsCostSetting" name="smsCost" type="text" placeholder="eg. 0.65" value="{{smsCosts}}">
-              <label for="">Warning level</label>``
+              <label for="">Warning level</label>
               <input class="u-full-width warningLevelSetting" name="warningLevel" type="text" placeholder="eg. 30.00" class="warningLevel" value="{{warningLevel}}" >
               <label for="">Critical level</label>
               <input class="u-full-width criticalLevelSetting" name="criticalLevel" type="text" placeholder="eg. 65.00" value="{{criticalLevel}}">
-              <button class="button-prim  ary updateSettings" type="submit" name="button">Update settings</button>              
+              <button class="button-primary updateSettings" type="submit" name="button">Update settings</button>              
               </form>
               </div>
           </div>

@@ -38,6 +38,11 @@ app.post("/action", function (req, res){
 	res.redirect("/")
 })
 
+app.post("/reset", function(req, res){
+	settings.clear();
+	res.redirect('/')
+})
+
 app.get("/actions", function(req, res){
 	res.render('actions', {
 		actions: settings.action()		
