@@ -3,6 +3,7 @@ let app = express()
 let bodyParser = require("body-parser")
 const exphbs = require("express-handlebars")
 const settingsBill = require("./public/settings-bill")
+const moment = require("moment")
 const settings = settingsBill()
 let PORT = process.env.PORT || 3001;
 
@@ -17,33 +18,40 @@ app.use(express.static('public'))
 app.engine('handlebars', exphbs({defaultLayout: "main"}))
 app.set("view engine", "handlebars")
 
+app.engine('handlebars', exphbs(
+	{defaultLayout: "main",
+	helpers:
+	{'timeStamp': function(){
+		return moment(this.timestamp).fromNow();
+	}
+}
+	}))
+
 
 app.get("/", function(req, res){	
-	res.render('home', 	settings.settingValues())
+	res.render('home', settings.renderAll())	
 })
-
 
 app.post("/action", function (req, res){
-	let radioButton = req.body.billItemTypeWithSettings
-	settings.radio(radioButton)
+	let radioButton = req.body.actionType;
+	settings.billType(radioButton)
 	res.redirect("/")
-	})
-
-app.get("/actions", function(req, res){
-	res.render('actions')
-
 })
 
-// app.get("/actions/sms", function(req, res){
-	
+app.get("/actions", function(req, res){
+	res.render('actions', {
+		actions: settings.action()		
+	})	
+})
 
-// })
-// app.get("/actions/total", function(req, res){
-
-// })
-
-
-	
+app.get('/actions/:type', function(req, res){
+	let type = req.params.type;
+	if (type === 'call' || type === 'sms') {
+		res.render("actions", {
+			actions: settings.filterCost(type)
+		})
+	}	
+})
 
 app.post("/settings", function(req, res){
 	let callPrice = req.body.callCost
@@ -58,6 +66,6 @@ app.post("/settings", function(req, res){
 	res.redirect("/")
 	
 })
-app.listen(port, function(){
+app.listen(PORT, function(){
 	console.log("App is starting on port" + PORT)
 })

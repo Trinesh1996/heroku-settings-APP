@@ -18,14 +18,15 @@
                 <div class="six columns">
                   <h5>Bill type</h5>
               <label class="">
-                <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="call">
+                <input type="radio"  name="actionType" class="billItemTypeWithSettings" value="call">
                 <span class="label-body">Call</span>
               </label>
               <label class="">
-                <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="sms">
+                <input type="radio" name="actionType" class="billItemTypeWithSettings" value="sms">
                 <span class="label-body" >SMS</span>
               </label>
               <button class="button-primary"  type="submit" name="button">Add</button>
+             
               </form>
 
 
@@ -33,7 +34,7 @@
                   <table>
                     <tr>
                       <td>
-                        <a href="/actions/calls">Call total</a>
+                        <a href="/actions/call">Call total</a>
                       </td>
                       <td>R<span class="callTotalSettings">{{callsTotal}}</span> </td>
                     </tr>
@@ -45,9 +46,10 @@
                     </tr>
                     <tr>
                       <td>
+                       
                         <a href="/actions">Total</a>
                       </td>
-                      <td> R<span class="totalSettings">{{total}}</span> </td>
+                      <td> R<span class={{color}}>{{total}}</span> </td>
                     </tr>
                   </table>
               
@@ -66,8 +68,8 @@
               <label for="">Warning level</label>``
               <input class="u-full-width warningLevelSetting" name="warningLevel" type="text" placeholder="eg. 30.00" class="warningLevel" value="{{warningLevel}}" >
               <label for="">Critical level</label>
-              <input class="u-full-width criticalLevelSetting" name="criticalLevel" type="text" placeholder="eg. 65.00" value="{{criticalLevels}}">
-              <button class="button-primary updateSettings" type="submit" name="button">Update settings</button>              
+              <input class="u-full-width criticalLevelSetting" name="criticalLevel" type="text" placeholder="eg. 65.00" value="{{criticalLevel}}">
+              <button class="button-prim  ary updateSettings" type="submit" name="button">Update settings</button>              
               </form>
               </div>
           </div>
