@@ -2,12 +2,13 @@
   "name": "express-settings-bill",
   "version": "1.0.0",
   "description": "",
-  "main": "./public/settings-bill.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js"
   },
 
   "keywords": [],
