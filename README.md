@@ -14,4 +14,4 @@ Backend basics, which includes:
 - Using Travis-CI for deploying code.
 - Handlebars for templating
 
-[![Build Status](https://travis-ci.org/Trinesh1996/bootcamp-terminal-tests.svg?branch=master)](https://travis-ci.org/Trinesh1996/bootcamp-terminal-tests)
+[![Build Status](https://travis-ci.org/Trinesh1996/heroku-settings-APP.svg?branch=master)](https://travis-ci.org/Trinesh1996/heroku-settings-APP)
