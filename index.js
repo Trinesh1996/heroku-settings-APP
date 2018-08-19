@@ -51,11 +51,16 @@ app.get("/actions", function(req, res){
 
 app.get('/actions/:type', function(req, res){
 	let type = req.params.type;
-	if (type === 'call' || type === 'sms') {
-		res.render("actions", {
+	if (type === 'call'){
+		res.render('actions', {
 			actions: settings.filterCost(type)
 		})
-	}	
+	}
+	else if(type === 'sms') {
+		res.render('actions', {
+			actions: settings.filterCost(type)
+		})
+	}
 })
 
 app.post("/settings", function(req, res){

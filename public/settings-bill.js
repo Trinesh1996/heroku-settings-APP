@@ -1,14 +1,16 @@
 module.exports = function() {
 	var callCosts = 0;
 	var smsCosts = 0;
-	var criticalLevel;
-	var warningLevel;
+	var criticalLevel = 0
+	var warningLevel = 0
 
 	var callsTotal = 0
 	var smsTotal = 0
 	var total = 0
 
 	var actionList = [];
+	var colors = "normal"
+
 	
 	function setSms(float){
 		if(float !== undefined){
@@ -30,15 +32,15 @@ module.exports = function() {
 			warningLevel = parseFloat(float)		
 		}
 	}
-	function color(){
-		if(total >= criticalLevel){
+	function color(){	
+		if(total > criticalLevel){
 			return "danger"
-		}
-		if(total >= warningLevel){
+		}	
+		if(total > warningLevel){
 			return "warning"
-		}
+		}				
 		else {
-			return ""
+			return "normal"
 		}	
 	}
 	function billType (bill) {		
@@ -61,29 +63,38 @@ module.exports = function() {
 		
 	actionList.push(
 		{"type": bill,
-		"price": cost,
-		timestamp: new Date()
+		"price": cost.toFixed(2),
+		"timeStamp": new Date()
 		})			
 	}
 
 	function clear(){
-		callsTotal = 0;
-		smsTotal = 0
-		total = 0;
-		warningLevel;
-		criticalLevel;
+		actionList = [];
+		return{
+			callCosts: callCosts = 0,
+			smsCosts: smsCosts = 0,
+			call: callsTotal = 0,
+			sms: smsTotal = 0,
+			tot: total = 0,
+			warn: warningLevel= 0,
+			critical: criticalLevel = 0,			
+			col: colors="normal"
+		}		
 	}
 
 	function filterCost(type){
-		let filter = [];
+		let filter = []
 		for (let i = 0; i < actionList.length; i++){
 			let actiontype = actionList[i];
 			if(actiontype.type == type){
 				filter.push(actiontype)
 			}
-		}
-		return filter
+		}return filter
 	}
+
+	// var type = actionList.map(function(bills){
+	// 	return bill.type
+	// })
 	function actionFor(){
 		return actionList
 	}
@@ -128,6 +139,7 @@ module.exports = function() {
 			filterCost,
 			color,
 			totals,
-			clear
+			clear,
+			colors
 		}
 	}
