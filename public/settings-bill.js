@@ -40,7 +40,7 @@ module.exports = function() {
 			return "warning"
 		}				
 		else {
-			return "normal"
+			return ""
 		}	
 	}
 	function billType (bill) {		
