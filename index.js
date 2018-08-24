@@ -15,17 +15,15 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 
 // Handlebars view engine for app
-app.engine('handlebars', exphbs({defaultLayout: "main"}))
+
 app.set("view engine", "handlebars")
 
-app.engine('handlebars', exphbs(
-	{defaultLayout: "main",
-	helpers:
-	{'timeStamp': function(){
-		return moment(this.timestamp).fromNow();
+app.engine('handlebars', exphbs({defaultLayout: "main",
+		helpers: {'timeStamp': function(){
+			return moment(this.timestamp).fromNow();
+		}
 	}
-}
-	}))
+}))
 
 
 app.get("/", function(req, res){	
